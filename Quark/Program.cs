@@ -9,14 +9,10 @@ internal class Program
 #if RELEASE
         Console.WriteLine("Mode: RELEASE");
 #endif
-        if (args.Length <= 0)
-        { 
-            Core.Quark.RunTerminal();
-            return;
-        }
+        if (args.Length <= 0) return;
 
         Core.Quark.Run(args[0]);
-        Console.WriteLine("Press any key to exit...");
+        Console.Write("Press any key to exit... ");
         Console.ReadKey();
     }
 }

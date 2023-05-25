@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Apps\\Me\\MPL\\Quark\\Quark\\QuarkLang.csproj": {}
+    "C:\\Users\\super\\OneDrive\\Desktop\\Quark\\Quark\\QuarkLang.csproj": {}
   },
   "projects": {
-    "D:\\Apps\\Me\\MPL\\Quark\\Quark\\QuarkLang.csproj": {
+    "C:\\Users\\super\\OneDrive\\Desktop\\Quark\\Quark\\QuarkLang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Apps\\Me\\MPL\\Quark\\Quark\\QuarkLang.csproj",
+        "projectUniqueName": "C:\\Users\\super\\OneDrive\\Desktop\\Quark\\Quark\\QuarkLang.csproj",
         "projectName": "QuarkLang",
-        "projectPath": "D:\\Apps\\Me\\MPL\\Quark\\Quark\\QuarkLang.csproj",
+        "projectPath": "C:\\Users\\super\\OneDrive\\Desktop\\Quark\\Quark\\QuarkLang.csproj",
         "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
-        "outputPath": "D:\\Apps\\Me\\MPL\\Quark\\Quark\\obj\\",
+        "outputPath": "C:\\Users\\super\\OneDrive\\Desktop\\Quark\\Quark\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\super\\AppData\\Roaming\\NuGet\\NuGet.Config",

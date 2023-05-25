@@ -5,7 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>annotations</Nullable>
-    <StartupObject>Quark.App</StartupObject>  
+    <StartupObject>Quark.Program</StartupObject>  
     <PublishAot>true</PublishAot>
   </PropertyGroup>
         
