@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuarkLang", "Quark\QuarkLang.csproj", "{29CFC362-74C1-4249-8BAE-0756343F8773}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{D836C3D1-6AFF-4352-A4F4-C21D83697BC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29CFC362-74C1-4249-8BAE-0756343F8773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29CFC362-74C1-4249-8BAE-0756343F8773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29CFC362-74C1-4249-8BAE-0756343F8773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29CFC362-74C1-4249-8BAE-0756343F8773}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1102A104-46B8-421C-BE46-70A7D0D022E8}
+	EndGlobalSection
+EndGlobal

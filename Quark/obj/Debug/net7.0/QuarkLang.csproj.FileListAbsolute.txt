@@ -1,0 +1,5 @@
+D:\Apps\Me\MPL\Quark\Quark\obj\Debug\net7.0\QuarkLang.csproj.AssemblyReference.cache
+D:\Apps\Me\MPL\Quark\Quark\obj\Debug\net7.0\QuarkLang.GeneratedMSBuildEditorConfig.editorconfig
+D:\Apps\Me\MPL\Quark\Quark\obj\Debug\net7.0\QuarkLang.AssemblyInfoInputs.cache
+D:\Apps\Me\MPL\Quark\Quark\obj\Debug\net7.0\QuarkLang.AssemblyInfo.cs
+D:\Apps\Me\MPL\Quark\Quark\obj\Debug\net7.0\QuarkLang.csproj.CoreCompileInputs.cache

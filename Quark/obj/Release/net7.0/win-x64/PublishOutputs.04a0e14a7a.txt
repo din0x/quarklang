@@ -1,0 +1,2 @@
+D:\Apps\Me\MPL\Quark\Quark\bin\Release\net7.0\win-x64\publish\Quark.exe
+D:\Apps\Me\MPL\Quark\Quark\bin\Release\net7.0\win-x64\publish\Quark.pdb
