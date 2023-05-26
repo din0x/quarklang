@@ -12,7 +12,7 @@ For now there is ***no documentation*** and ***I don't know for how long i will 
 
 ## Here is some example code
 ```python
-print("Hello, World!");
+print("Hello, world!");
 
 fun double(x: int32): int32 {
   return 2 * x;
