@@ -19,11 +19,10 @@ public static class Quark
         }
         string code = File.ReadAllText(path);
 
-
-
         var lexer = new Lexer.Lexer(code, path);
-        var parser = new Parser.Parser(lexer.Tokens, path);
         //Console.WriteLine(TokensToString(lexer.Tokens));
+
+        var parser = new Parser.Parser(lexer.Tokens, path);
         //Console.WriteLine(ASTToJson(parser.Program));
 
         if (parser.ErrorEncountered) return;

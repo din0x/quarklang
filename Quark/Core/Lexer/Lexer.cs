@@ -24,14 +24,27 @@ public class Lexer
 
         bool lookForOperator = false;
         bool insideString = false;
+        bool comment = false;
 
         short line = 1;
         int current = 1;
 
         foreach (char c in sourceCode)
         {
-            current++;
-            if (c is '\n') { line++; current = 1; }
+            if (c is '\n')
+            {
+                line++; current = 0;
+                comment = false;
+            }
+
+            else if (c == '#') // comments
+                comment = true;
+            else if (comment)
+                continue;
+
+            if (!comment)
+                current++;
+
             if (c == '"')
             {
                 if (insideString)
@@ -41,56 +54,57 @@ public class Lexer
                 }
                 insideString = !insideString;
             }
-            else if (insideString) str += c;
+            else if (insideString) 
+                str += c;
             else
             {
                 if (c is ' ' or '\n' or '\t' or '\r' or
                     '=' or '!' or '<' or '>' or
                     '+' or '-' or '*' or '/' or '%' or
                     '(' or ')' or '{' or '}' or '&' or
-                    '|' or ',' or ':' or ';'
+                    '|' or ',' or ':' or ';' or '#'
                     || c == '.' && !int.TryParse(str.Replace("_", ""), out int _))
                 {
                     // multi character tokens eg. 1000, my_value
                     if (str != "")
                     {
-                        if (int.TryParse(str.Replace("_", ""), out int i)) 
+                        if (int.TryParse(str.Replace("_", ""), out int i))
                             tokens.Add(new(TokenType.Int32, line, current - str.Trim().Length - 1, str.Replace('.', ',')));
 
-                        else if (float.TryParse(str.Replace("_", "").Replace('.', ','), out float f)) 
+                        else if (float.TryParse(str.Replace("_", "").Replace('.', ','), out float f))
                             tokens.Add(new(TokenType.Float32, line, current - str.Trim().Length - 1, str.Replace('.', ',')));
 
-                        else if (str == "true" || str == "false") 
+                        else if (str == "true" || str == "false")
                             tokens.Add(new(TokenType.Boolean, line, current - str.Trim().Length - 1, str));
 
-                        else if (str == "null") 
+                        else if (str == "null")
                             tokens.Add(new(TokenType.Null, line, current - 5));
 
-                        else if (str == "var") 
+                        else if (str == "var")
                             tokens.Add(new(TokenType.Var, line, current - 4));
-                        else if (str == "const") 
+                        else if (str == "const")
                             tokens.Add(new(TokenType.Const, line, current - 6));
 
 
 
-                        else if (str == "if") 
+                        else if (str == "if")
                             tokens.Add(new(TokenType.If, line, current - 3));
-                        else if (str == "elif") 
+                        else if (str == "elif")
                             tokens.Add(new(TokenType.Elif, line, current - 5));
-                        else if (str == "else") 
+                        else if (str == "else")
                             tokens.Add(new(TokenType.Else, line, current - 5));
 
-                        else if (str == "while") 
+                        else if (str == "while")
                             tokens.Add(new(TokenType.While, line, current - 6));
-                        else if (str == "break") 
+                        else if (str == "break")
                             tokens.Add(new(TokenType.Break, line, current - 6));
 
-                        else if (str == "fun") 
+                        else if (str == "fun")
                             tokens.Add(new(TokenType.Fun, line, current - 4));
-                        else if (str == "return") 
+                        else if (str == "return")
                             tokens.Add(new(TokenType.Return, line, current - 6));
 
-                        else if (str == "import") 
+                        else if (str == "import")
                             tokens.Add(new(TokenType.Import, line, current - 6));
 
                         else if (str.Trim() != "")
@@ -111,7 +125,7 @@ public class Lexer
                             && tokens.Last().value is not "&" or "|")
                         {
 
-                            if (tokens.Last().type == TokenType.EqualSign) 
+                            if (tokens.Last().type == TokenType.EqualSign)
                                 tokens.Add(new(TokenType.BinaryOperator, line, current - 2, "=="));
                             else tokens.Add(new(TokenType.BinaryOperator, line, current - 2, tokens.Last().value + "="));
 

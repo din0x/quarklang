@@ -263,47 +263,6 @@ class Parser
         return new VariableAssignment(variable, value);
     }
 
-    private Statement ParseCallStmt()
-    {
-        var expr = ParseCallExpr();
-
-        while (At().type == TokenType.Dot)
-        {
-            Eat();
-            Expect(TokenType.Identifier);
-            expr = new MemberExpression(expr, Eat().value);
-
-            if (At().type == TokenType.OpenParen)
-            {
-                Eat();
-                List<Expression> args = new();
-                while (At().type != TokenType.CloseParen)
-                {
-                    args.Add(ParseExpr());
-
-                    if (At().type != TokenType.CloseParen)
-                    {
-                        if (Expect(TokenType.Comma))
-                            Eat();
-                    }
-                }
-                Eat();
-                expr = new CallExpression(expr, args.ToArray(), false);
-            }
-        }
-
-        if (expr is CallExpression call)
-        {
-            if (Expect(TokenType.Semicolon)) { Eat(); }
-
-            call.useAsStmt = true;
-            return call;
-        }
-
-        Expect(TokenType.OpenParen);
-        return new Statement();
-    }
-
     private Expression ParseExpr()
     {
         return ParseLogicalExpr();
@@ -413,7 +372,7 @@ class Parser
         {
             Eat();
             List<Expression> args = new();
-            while (At().type != TokenType.CloseParen)
+            while (At().type != TokenType.CloseParen && NotEOF())
             {
                 args.Add(ParseExpr());
 

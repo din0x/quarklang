@@ -6,8 +6,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-#if RELEASE
-        Console.WriteLine("Mode: RELEASE");
+#if DEBUG
+        Console.WriteLine("Mode: DEBUG");
 #endif
         if (args.Length <= 0) return;
 
