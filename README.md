@@ -18,7 +18,7 @@ fun double(x: int32): int32 {
 }
 
 var y = 2;
-print(double(y)); #asdasdad
+print(double(y)); 
 ```
 
 ## Instalation
