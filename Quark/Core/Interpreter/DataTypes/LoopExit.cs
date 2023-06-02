@@ -1,6 +1,6 @@
 ﻿namespace QuarkLang.Core.Interpreter.DataTypes;
 
-public class VoidValue : RuntimeValue
+public class LoopExit : RuntimeValue
 {
 
 }

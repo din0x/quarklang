@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Quark.Core.Parser.AST;
+namespace QuarkLang.Core.Parser.AST;
 
 public class ProgramUnit : Statement
 {

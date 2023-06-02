@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Quark.Core.Interpreter.DataTypes;
+namespace QuarkLang.Core.Interpreter.DataTypes;
 
 public abstract class RuntimeValue
 {

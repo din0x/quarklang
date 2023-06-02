@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Quark.Core.Interpreter.DataTypes;
+using QuarkLang.Core.Interpreter.DataTypes;
 
-namespace Quark.Core.Interpreter;
+namespace QuarkLang.Core.Interpreter;
 
 public class Environment
 {

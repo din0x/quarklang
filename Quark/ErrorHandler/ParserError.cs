@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace Quark.ErrorHandler;
+namespace QuarkLang.ErrorHandler;
 
 public class ParserError : Error
 {

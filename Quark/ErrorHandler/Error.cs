@@ -1,4 +1,4 @@
-﻿namespace Quark.ErrorHandler;
+﻿namespace QuarkLang.ErrorHandler;
 
 public abstract class Error
 {

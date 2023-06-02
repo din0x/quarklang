@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Quark.Core.Lexer;
+namespace QuarkLang.Core.Lexer;
 
 public class Lexer
 {

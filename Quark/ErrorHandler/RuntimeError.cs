@@ -1,6 +1,6 @@
-﻿using Quark.Core.Interpreter.DataTypes;
+﻿using QuarkLang.Core.Interpreter.DataTypes;
 
-namespace Quark.ErrorHandler;
+namespace QuarkLang.ErrorHandler;
 
 internal class RuntimeError : Error
 {

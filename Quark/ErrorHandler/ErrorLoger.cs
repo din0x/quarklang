@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Quark.ErrorHandler;
+namespace QuarkLang.ErrorHandler;
 
 public class ErrorLoger
 {

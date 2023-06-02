@@ -1,4 +1,4 @@
-﻿namespace Quark.Core.Interpreter.DataTypes;
+﻿namespace QuarkLang.Core.Interpreter.DataTypes;
 
 public class Float32Value : RuntimeValue
 {

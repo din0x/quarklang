@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
-using Quark.Core.Lexer;
-using Quark.Core.Parser.AST;
+using QuarkLang.Core.Lexer;
+using QuarkLang.Core.Parser.AST;
 using System;
 using System.IO;
 
-namespace Quark.Core;
+namespace QuarkLang.Core;
 
 public static class Quark
 {
@@ -47,7 +47,7 @@ public static class Quark
         return JsonConvert.SerializeObject(stmt, settings);
     }
 
-    private static string TokensToString(Token[] tokens)
+    public static string TokensToString(Token[] tokens)
     {
         var str = "";
         foreach (var token in tokens)

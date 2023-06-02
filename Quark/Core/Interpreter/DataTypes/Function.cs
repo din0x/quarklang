@@ -1,6 +1,6 @@
-﻿using Quark.Core.Parser.AST;
+﻿using QuarkLang.Core.Parser.AST;
 
-namespace Quark.Core.Interpreter.DataTypes;
+namespace QuarkLang.Core.Interpreter.DataTypes;
 
 public class Function : RuntimeValue
 {

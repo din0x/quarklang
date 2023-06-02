@@ -1,6 +1,6 @@
-﻿using Quark.Core.Interpreter.DataTypes;
+﻿using QuarkLang.Core.Interpreter.DataTypes;
 
-namespace Quark.Core.Parser.AST;
+namespace QuarkLang.Core.Parser.AST;
 
 public class FunctionDeclaration : Statement
 {

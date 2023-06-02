@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Quark;
+namespace QuarkLang;
 
 internal class Program
 {

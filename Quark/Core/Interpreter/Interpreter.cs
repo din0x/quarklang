@@ -1,12 +1,12 @@
-﻿using Quark.Core.Interpreter.DataTypes;
-using Quark.Core.Parser.AST;
-using Quark.ErrorHandler;
+﻿using QuarkLang.Core.Interpreter.DataTypes;
+using QuarkLang.Core.Parser.AST;
+using QuarkLang.ErrorHandler;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Quark.Core.Interpreter;
+namespace QuarkLang.Core.Interpreter;
 
 public class Interpreter
 {
@@ -48,6 +48,7 @@ public class Interpreter
         else if (stmt is ConditionalStatement ifElseStmt) return EvaluateIfElseStmt(ifElseStmt, env);
         else if (stmt is WhileLoop whileLoop) return EvaluateWhileLoop(whileLoop, env);
         else if (stmt is CallExpression functionCall) return EvaluateCallExpr(functionCall, env);
+        else if (stmt is BreakStatement) return new LoopExit();
 
         else if (stmt is Expression expr) return EvaluateExpression(expr, env);
 
@@ -231,7 +232,8 @@ public class Interpreter
             foreach (var s in whileLoop.body)
             {
                 var v = EvaluateStatement(s, newEnv);
-                if (v is not null) return v;
+                if (v is not null)
+                    return (v is LoopExit) ? null : v;
             }
         }
     }

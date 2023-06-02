@@ -1,11 +1,11 @@
-﻿using Quark.Core.Interpreter.DataTypes;
-using Quark.Core.Lexer;
-using Quark.Core.Parser.AST;
-using Quark.ErrorHandler;
+﻿using QuarkLang.Core.Interpreter.DataTypes;
+using QuarkLang.Core.Lexer;
+using QuarkLang.Core.Parser.AST;
+using QuarkLang.ErrorHandler;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Quark.Core.Parser;
+namespace QuarkLang.Core.Parser;
 
 class Parser
 {
@@ -116,10 +116,12 @@ class Parser
 
                 if (args.Count > 0 && At().type != TokenType.CloseParen)
                 {
-                    if (Expect(TokenType.Comma)) Eat(); // ,
+                    if (Expect(TokenType.Comma)) 
+                        Eat(); // ,
                 }
             }
-            if (Expect(TokenType.CloseParen)) Eat(); // )
+            if (Expect(TokenType.CloseParen)) 
+                Eat(); // )
 
             var returnType = new TypeValue(new VoidValue());
             if (At().type == TokenType.Colon)
@@ -225,7 +227,8 @@ class Parser
 
     private Statement ParseReturnStmt()
     {
-        if (At().type != TokenType.Return) return ParseVariableAssignmentStmt();
+        if (At().type != TokenType.Return) 
+            return ParseBreakStmt();
         Eat();
 
         Expression? expr = null;
@@ -238,6 +241,18 @@ class Parser
         if (Expect(TokenType.Semicolon)) Eat();
 
         return new ReturnStatement(expr);
+    }
+
+    private Statement ParseBreakStmt()
+    {
+        if (At().type != TokenType.Break)
+            return ParseVariableAssignmentStmt();
+        Eat();
+
+        if (Expect(TokenType.Semicolon))
+            Eat();
+
+        return new BreakStatement();
     }
 
     private Statement ParseVariableAssignmentStmt()
