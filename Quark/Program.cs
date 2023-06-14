@@ -12,7 +12,5 @@ internal class Program
         if (args.Length <= 0) return;
 
         Core.Quark.Run(args[0]);
-        Console.Write("Press any key to exit... ");
-        Console.ReadKey();
     }
 }

@@ -15,7 +15,7 @@ public static class Quark
         if (!File.Exists(path))
         {
             Console.WriteLine($"File '{path}' does not exist"); 
-            return; 
+            return;
         }
         string code = File.ReadAllText(path);
 
@@ -23,10 +23,12 @@ public static class Quark
         //Console.WriteLine(TokensToString(lexer.Tokens));
 
         var parser = new Parser.Parser(lexer.Tokens, path);
-        //Console.WriteLine(ASTToJson(parser.Program));
+        Console.WriteLine(ASTToJson(parser.Program));
 
         if (parser.ErrorEncountered) return;
         var start2 = DateTime.Now;
+
+        Console.ReadLine();
 
         var interpreter = new Interpreter.Interpreter(parser.Program, path);
 
@@ -34,6 +36,8 @@ public static class Quark
         var total = Math.Round((DateTime.Now - start1).TotalSeconds, 3).ToString().Replace(',', '.');
         var result = interpreter.ExitCode;
         Console.WriteLine($"Finshed with code {result} in {runtime}s ({nameof(total)}: {total}s)");
+        Console.Write("Press any key to exit... ");
+        Console.ReadKey();
     }
 
     public static string ASTToJson(Statement stmt)

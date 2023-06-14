@@ -15,7 +15,8 @@ public class Lexer
 
     public static Token[] Tokenize(string? sourceCode, string path)
     {
-        if (sourceCode == null) throw new ArgumentNullException(nameof(sourceCode));
+        if (sourceCode == null) 
+            throw new ArgumentNullException(nameof(sourceCode));
         sourceCode += " ";
         Token.path = path;
 
@@ -85,8 +86,6 @@ public class Lexer
                         else if (str == "const")
                             tokens.Add(new(TokenType.Const, line, current - 6));
 
-
-
                         else if (str == "if")
                             tokens.Add(new(TokenType.If, line, current - 3));
                         else if (str == "elif")
@@ -102,10 +101,15 @@ public class Lexer
                         else if (str == "fun")
                             tokens.Add(new(TokenType.Fun, line, current - 4));
                         else if (str == "return")
-                            tokens.Add(new(TokenType.Return, line, current - 6));
+                            tokens.Add(new(TokenType.Return, line, current - 7));
+                        
+                        else if (str == "class")
+                            tokens.Add(new(TokenType.Class, line, current - 6));
+                        else if (str == "new")
+                            tokens.Add(new(TokenType.Class, line, current - 4));
 
                         else if (str == "import")
-                            tokens.Add(new(TokenType.Import, line, current - 6));
+                            tokens.Add(new(TokenType.Import, line, current - 7));
 
                         else if (str.Trim() != "")
                             tokens.Add(new(TokenType.Identifier, line, current - str.Trim().Length - 1, str.Trim()));
@@ -187,6 +191,8 @@ public enum TokenType
     Semicolon,
 
     Import,
+
+    Class,
 
     Var,
     Const,

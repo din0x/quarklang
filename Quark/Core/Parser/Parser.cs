@@ -2,7 +2,9 @@
 using QuarkLang.Core.Lexer;
 using QuarkLang.Core.Parser.AST;
 using QuarkLang.ErrorHandler;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace QuarkLang.Core.Parser;
@@ -62,7 +64,96 @@ class Parser
 
     private Statement ParseStmt()
     {
-        return ParseImportStmt();
+        return ParseClassDeclarationStmt();
+    }
+
+    private Statement ParseClassDeclarationStmt()
+    {
+        if (At().type != TokenType.Class) return ParseImportStmt();
+        Eat();
+        Expect(TokenType.Identifier);
+        Eat();
+        //string name = Eat().value;
+        if (Expect(TokenType.OpenBrace))
+            Eat();
+
+        var fields = new List<ClassDeclaration.Field>();
+        var methods = new List<ClassDeclaration.Method>();
+        while (At().type != TokenType.CloseBrace && NotEOF())
+        {
+            if (At().type == TokenType.Fun)
+            {
+
+                Eat(); // fun
+                var name = Expect(TokenType.Identifier) ? Eat().value : ""; // name
+                Expect(TokenType.OpenParen);
+                Eat(); // (
+
+                List<FunctionDeclaration.Argument> args = new();
+
+                while (tokens.Count > 0 && At().type != TokenType.CloseParen)
+                {
+                    var argname = Expect(TokenType.Identifier) ? Eat().value : ""; // arg
+                    if (Expect(TokenType.Colon)) Eat();
+                    var argtype = Expect(TokenType.Identifier) ? Eat().value : ""; // type
+
+                    args.Add(new(argname, new TypeValue(argtype)));
+
+                    if (args.Count > 0 && At().type != TokenType.CloseParen)
+                    {
+                        if (Expect(TokenType.Comma))
+                            Eat(); // ,
+                    }
+                }
+                if (Expect(TokenType.CloseParen))
+                    Eat(); // )
+
+                Expression returnType = new Identifier("void");
+                if (At().type == TokenType.Colon)
+                {
+                    Eat();
+
+                    returnType = ParseTypeExpr();
+                }
+
+                var body = new List<Statement>();
+
+                Expect(TokenType.OpenBrace);
+                Eat();
+                while (At().type != TokenType.CloseBrace && NotEOF())
+                {
+                    body.Add(ParseStmt());
+                }
+                Expect(TokenType.CloseBrace);
+                Eat();
+
+                methods.Add(new(name, returnType, args.ToArray(), body.ToArray()));
+            } 
+            else
+            {
+                Expect(TokenType.Identifier);
+                string fieldName = Eat().value;
+                if (Expect(TokenType.Colon))
+                    Eat();
+                var type = ParseTypeExpr();
+                Expression? value = null;
+
+                if (At().type == TokenType.EqualSign)
+                {
+                    Eat();
+                    value = ParseExpr();
+                }
+
+                if (Expect(TokenType.Semicolon))
+                    Eat();
+
+                fields.Add(new ClassDeclaration.Field(fieldName, type, value));
+            }
+        }
+        Eat();
+
+
+        return new ClassDeclaration(fields.ToArray(), methods.ToArray());
     }
 
     private Statement ParseImportStmt()
@@ -439,5 +530,20 @@ class Parser
         Expect(null);
         Eat();
         return new Expression();
+    }
+
+    private Expression ParseTypeExpr()
+    {
+        Expect(TokenType.Identifier);
+        Expression type = new Identifier(Eat().value);
+
+        while (At().type == TokenType.Dot && NotEOF())
+        {
+            Eat();
+            Expect(TokenType.Identifier);
+            type = new MemberExpression(type, Eat().value);
+        }
+
+        return type;
     }
 }
