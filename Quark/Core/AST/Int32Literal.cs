@@ -1,7 +1,7 @@
 ﻿using QuarkLang.Core;
 using QuarkLang.Core.Runtime;
 
-namespace QuarkLang.AST;
+namespace QuarkLang.Core.AST;
 
 public class Int32Literal : Expression
 {

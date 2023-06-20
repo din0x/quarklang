@@ -1,11 +1,11 @@
 ﻿using QuarkLang.Core.Runtime;
 
-namespace QuarkLang.AST;
+namespace QuarkLang.Core.AST;
 
 public class BooleanLiteral : Expression
 {
     public bool _value;
-    
+
     public BooleanLiteral(bool value)
     {
         _value = value;

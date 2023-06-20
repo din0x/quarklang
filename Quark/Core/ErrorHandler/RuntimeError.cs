@@ -1,6 +1,6 @@
 ﻿using QuarkLang.Core.Runtime;
 
-namespace QuarkLang.ErrorHandler;
+namespace QuarkLang.Core.ErrorHandler;
 
 internal class RuntimeError : Error
 {

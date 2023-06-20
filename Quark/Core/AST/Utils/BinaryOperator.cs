@@ -1,10 +1,10 @@
-﻿namespace QuarkLang.AST.Utils;
+﻿namespace QuarkLang.Core.AST.Utils;
 
 public enum BinaryOperator
 {
     Add,
-    Subtract, 
-    Multiply, 
+    Subtract,
+    Multiply,
     Divide,
     Modulo,
 

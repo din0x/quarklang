@@ -1,7 +1,7 @@
-﻿using QuarkLang.AST.Utils;
+﻿using QuarkLang.Core.AST.Utils;
 using QuarkLang.Core.Runtime;
 
-namespace QuarkLang.AST;
+namespace QuarkLang.Core.AST;
 
 public class BinaryExpression : Expression
 {
@@ -36,9 +36,9 @@ public class BinaryExpression : Expression
             return left.Divide(right);
         else if (_operator == BinaryOperator.Modulo)
             return left.Modulo(right);
-        else if (_operator == BinaryOperator.Equal) 
+        else if (_operator == BinaryOperator.Equal)
             return left.Equal(right);
-        else if (_operator == BinaryOperator.NotEqual) 
+        else if (_operator == BinaryOperator.NotEqual)
             return left.NotEqual(right);
         else if (_operator == BinaryOperator.More)
             return left.Greater(right);

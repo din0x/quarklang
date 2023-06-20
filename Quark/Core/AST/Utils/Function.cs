@@ -1,4 +1,4 @@
-﻿namespace QuarkLang.AST.Utils;
+﻿namespace QuarkLang.Core.AST.Utils;
 
 public class Function
 {

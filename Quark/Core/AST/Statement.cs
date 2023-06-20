@@ -1,6 +1,6 @@
 ﻿using QuarkLang.Core.Runtime;
 
-namespace QuarkLang.AST;
+namespace QuarkLang.Core.AST;
 
 public abstract class Statement
 {

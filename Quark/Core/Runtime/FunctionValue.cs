@@ -1,5 +1,5 @@
-﻿using QuarkLang.AST;
-using QuarkLang.AST.Utils;
+﻿using QuarkLang.Core.AST.Utils;
+using QuarkLang.Core.AST;
 
 namespace QuarkLang.Core.Runtime;
 

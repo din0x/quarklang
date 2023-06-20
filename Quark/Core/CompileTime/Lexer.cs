@@ -1,9 +1,9 @@
-﻿using QuarkLang.Core.Utils;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 using System.Linq;
+using QuarkLang.Core.CompileTime.Utils;
 
-namespace QuarkLang.Core;
+namespace QuarkLang.Core.CompileTime;
 
 public static class Lexer
 {
@@ -115,7 +115,7 @@ public static class Lexer
 
                             if (tokens.Last()._type == TokenType.EqualSign)
                                 tokens.Add(new(TokenType.Operator, "==", current - (uint)str.Length));
-                            else 
+                            else
                                 tokens.Add(new(TokenType.Operator, tokens.Last()._value + "=", current - (uint)str.Length));
 
                             tokens.RemoveAt(tokens.Count - 2);
@@ -140,37 +140,37 @@ public static class Lexer
                             lookForOperator = true;
                         }
                     }
-                    else if (c == ',') 
-                    { 
-                        tokens.Add(new(TokenType.Comma, ",", current - 1)); lookForOperator = false; 
+                    else if (c == ',')
+                    {
+                        tokens.Add(new(TokenType.Comma, ",", current - 1)); lookForOperator = false;
                     }
-                    else if (c == '.') 
-                    { 
-                        tokens.Add(new(TokenType.Dot, ".", current - 1)); lookForOperator = false; 
+                    else if (c == '.')
+                    {
+                        tokens.Add(new(TokenType.Dot, ".", current - 1)); lookForOperator = false;
                     }
-                    else if (c == ':') 
-                    { 
-                        tokens.Add(new(TokenType.Colon, ":", current - 1)); lookForOperator = false; 
+                    else if (c == ':')
+                    {
+                        tokens.Add(new(TokenType.Colon, ":", current - 1)); lookForOperator = false;
                     }
-                    else if (c == ';') 
-                    { 
-                        tokens.Add(new(TokenType.Semicolon, ";", current - 1)); lookForOperator = false; 
+                    else if (c == ';')
+                    {
+                        tokens.Add(new(TokenType.Semicolon, ";", current - 1)); lookForOperator = false;
                     }
-                    else if (c == '(') 
-                    { 
-                        tokens.Add(new(TokenType.OpenParen, "(", current - 1)); lookForOperator = false; 
+                    else if (c == '(')
+                    {
+                        tokens.Add(new(TokenType.OpenParen, "(", current - 1)); lookForOperator = false;
                     }
-                    else if (c == ')') 
-                    { 
-                        tokens.Add(new(TokenType.CloseParen, ")", current - 1)); lookForOperator = false; 
+                    else if (c == ')')
+                    {
+                        tokens.Add(new(TokenType.CloseParen, ")", current - 1)); lookForOperator = false;
                     }
-                    else if (c == '{') 
-                    { 
-                        tokens.Add(new(TokenType.OpenBrace, "{", current - 1)); lookForOperator = false; 
+                    else if (c == '{')
+                    {
+                        tokens.Add(new(TokenType.OpenBrace, "{", current - 1)); lookForOperator = false;
                     }
-                    else if (c == '}') 
-                    { 
-                        tokens.Add(new(TokenType.CloseBrace, "}", current - 1)); lookForOperator = false; 
+                    else if (c == '}')
+                    {
+                        tokens.Add(new(TokenType.CloseBrace, "}", current - 1)); lookForOperator = false;
                     }
                 }
                 else str += c;

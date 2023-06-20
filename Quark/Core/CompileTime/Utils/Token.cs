@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuarkLang.Core.Utils;
+namespace QuarkLang.Core.CompileTime.Utils;
 
 public class Token
 {
@@ -19,6 +19,6 @@ public class Token
 
     public override string ToString()
     {
-        return $"{_type, -20} {_value}";
+        return $"{_type,-20} {_value}";
     }
 }

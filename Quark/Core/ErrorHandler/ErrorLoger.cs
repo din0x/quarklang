@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace QuarkLang.ErrorHandler;
+namespace QuarkLang.Core.ErrorHandler;
 
-public class ErrorLoger
+public class ErrorLogger
 {
     public static void Log(Error error)
     {

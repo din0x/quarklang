@@ -1,13 +1,13 @@
-﻿using QuarkLang.AST;
-using QuarkLang.AST.Utils;
-using QuarkLang.Core.Utils;
+﻿using QuarkLang.Core.AST;
+using QuarkLang.Core.AST.Utils;
+using QuarkLang.Core.CompileTime.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 
-namespace QuarkLang.Core;
+namespace QuarkLang.Core.CompileTime;
 
 public class Parser
 {
@@ -19,7 +19,7 @@ public class Parser
         return parser._program;
     }
 
-    private Parser(Token[] tokens) 
+    private Parser(Token[] tokens)
     {
         _tokens = new List<Token>(tokens);
         eof = _tokens.Last();
@@ -182,7 +182,7 @@ public class Parser
         if (At(TokenType.Const))
             @const = true;
         Eat();
-        
+
         Expect(TokenType.Identifier);
         var name = Eat()._value;
 
@@ -330,7 +330,7 @@ public class Parser
                     {
                         break;
                     }
-                        
+
 
                     if (args.Count != 0)
                     {

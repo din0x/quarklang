@@ -1,4 +1,4 @@
-﻿namespace QuarkLang.Core.Utils;
+﻿namespace QuarkLang.Core.CompileTime.Utils;
 
 public enum TokenType
 {

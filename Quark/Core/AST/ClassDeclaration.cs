@@ -1,7 +1,7 @@
-﻿using QuarkLang.AST.Utils;
+﻿using QuarkLang.Core.AST.Utils;
 using QuarkLang.Core.Runtime;
 
-namespace QuarkLang.AST;
+namespace QuarkLang.Core.AST;
 
 public class ClassDeclaration : Statement
 {
