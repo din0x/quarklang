@@ -1,4 +1,4 @@
-﻿using QuarkLang.Core.Interpreter.DataTypes;
+﻿using QuarkLang.Core.Runtime;
 
 namespace QuarkLang.ErrorHandler;
 

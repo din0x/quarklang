@@ -1,4 +1,8 @@
-﻿using System;
+﻿using QuarkLang.Core;
+using QuarkLang.ErrorHandler;
+using System;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace QuarkLang;
 
@@ -6,21 +10,22 @@ internal class Program
 {
 	private static void Main(string[] args)
 	{
-		if (args.Length <= 0) 
-			return;
+		//if (args.Length <= 0) 
+		//	return;
 
-		if (args[0] == "help" && args[0] == "-h")
-			DisplayHelpMessage();
+		var file = """C:\Users\super\OneDrive\Desktop\test.q""";
+		var tokens = Lexer.Tokenize(File.ReadAllText(file));
+        foreach (var token in tokens) 
+		{
+            Console.WriteLine(token);
+        }
+        var program = Parser.Parse(tokens);
 
-		Core.Quark.Run(args[0]);
-	}
+        Console.WriteLine(JsonConvert.SerializeObject(program, new JsonSerializerSettings() 
+		{ 
+			Formatting = Formatting.Indented,
+		}));
 
-	private static void DisplayHelpMessage()
-	{
-		var help = """
-		
-		""";
-
-		Console.WriteLine(help);
+        Interpreter.Run(program);
 	}
 }
