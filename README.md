@@ -6,19 +6,9 @@ For now there is ***no documentation*** and ***I don't know for how long i will 
 
 ## Here is some example code
 ```python
-fun main() {
-  print("Hello, World!");
+fn main() {
+  print("Hello, world!");
 }
-
-main();
-```
-```python
-fun double(x: int32): int32 {
-  return 2 * x;
-}
-
-var y = 2;
-print(double(y)); 
 ```
 
 ## Instalation
